@@ -37,7 +37,6 @@ class Circle {
 	}
 
 	public static void main(String[] args) {
-		// 크기가 3인 Circle 객체 배열 c 선언 후 이름이 Circle이고 radius가 0인 객체로 초기화
 		Scanner scanner = new Scanner(System.in);
 		Circle[] c = new Circle[3];
 		
@@ -54,17 +53,24 @@ class Circle {
 				if (command.equals("Circle") && i < c.length) {
 					double radius = scanner.nextDouble();
 					c[i] = new Circle("Circle", radius);
-					System.out.printf("%s의 넓이: %.2f\n", c[i].name, c[i].area);
 					i++;
+					
+					if (i == 3) { // circle 3개면 바로 출력
+						for (Circle circle : c) {
+							System.out.printf("%s의 넓이: %.2f\n", circle.name, circle.area);
+						}
+						break;
+					}
 				}
 
 				else if (command.equals("Break")) {
-					c[i] = new Circle();
-					System.out.printf("%s의 넓이: %.2f\n", c[i].name, c[i].area);
-					
+					for (int k = 0; k < c.length; k++) {
+						System.out.printf("%s의 넓이: %.2f\n", c[k].name, c[k].area);
+					}
 					scanner.close();
 					break;
 				} 
+
 			}
 
 	}
